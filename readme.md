@@ -2,7 +2,8 @@
 ---
 ## 准备
 默认已安装docker
-下载
+
+[一个可用的bag](https://drive.google.com/file/d/1s05tBQOLNEDDurlg48KiUWxCp-YqYyGH/view)
 
 ## 安装
 下载
@@ -20,7 +21,8 @@ docker run -it --rm \
 --device /dev/dri \
 --env "DISPLAY=$DISPLAY" \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
--v /home/lavinci/Desktop/loam/guihua-2_2021-12-23-10-31-52.bag:/data/aloam/test.bag \
+-v /home/lavinci/Desktop/loam/<your_bag.bag>:/data/aloam/test.bag \
 loam:latest bash
 ```
 进入容器后会自动播放 test.bag
+![show](assert/screenshot.png)

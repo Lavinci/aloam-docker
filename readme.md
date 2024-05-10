@@ -1,7 +1,8 @@
 # 基于ros-noetic,ubuntu20.04的alom镜像
 ---
 ## 准备
-默认已安装docker
+1. 安装docker
+2. 安装 tmux: ``apt install tmux``
 
 [一个可用的bag](https://drive.google.com/file/d/1s05tBQOLNEDDurlg48KiUWxCp-YqYyGH/view)
 
@@ -15,14 +16,11 @@ docker build -t loam .
 ```
 
 ## 运行
-将倒数第二行的<your_bag>替换为你自己的
-```bash
-docker run -it --rm \
---device /dev/dri \
---env "DISPLAY=$DISPLAY" \
--v /tmp/.X11-unix:/tmp/.X11-unix \
--v /home/lavinci/Desktop/loam/<your_bag.bag>:/data/aloam/test.bag \
-loam:latest bash
-```
-进入容器后会自动播放 test.bag
+1. 运行脚本``./run.sh <your_bag_name>.bag``
+
+    运行后会自动播放 test.bag
+
+2. 建图完成后，在右侧窗口敲回车，pcd文件会保存在目录下，然后按ctrl+C结束保存，选择最新的pcd文件即可
+3. 按ctrl+b 再按shift+7退出运行 或分别ctrl+c输入exit退出运行
+
 ![show](assert/screenshot.png)

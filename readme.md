@@ -20,7 +20,7 @@ docker build -t loam .
 
     运行后会自动播放 test.bag
 
-2. 建图完成后，在右侧窗口敲回车，pcd文件会保存在目录下，然后按ctrl+C结束保存，选择最新的pcd文件即可
+2. 建图完成后，在右侧窗口敲回车，pcd文件会保存在results目录下，然后按ctrl+C结束保存，选择最新的pcd文件即可
 3. 按ctrl+b 再按shift+7退出运行 或分别ctrl+c输入exit退出运行
 
 ![show](assert/screenshot.png)

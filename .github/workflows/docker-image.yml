@@ -28,3 +28,8 @@ jobs:
         sudo docker login --username=${{secrets.DOCKER_USERNAME}} --password=${{secrets.DOCKER_PASSWORD}}
         sudo docker tag loam:latest lavinci/loam:latest
         sudo docker push lavinci/loam:latest
+    - name: 推送到ghcr
+      run: |
+        sudo docker login --username=${{secrets.GH_USERNAME}} ghcr.io/lavinci --password=${{secrets.GH_PASSWORD}}
+        sudo docker tag loam:latest ghcr.io/lavinci/loam:latest
+        sudo docker push ghcr.io/lavinci/loam:latest

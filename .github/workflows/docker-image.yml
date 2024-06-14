@@ -14,9 +14,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: 
+    - name: 构建镜像
+      run: sudo docker build -t loam:latest .
+
+    - name: 推送到阿里云
+      run: |
         sudo docker login --username=${{secrets.ALI_USERNAME}} registry.cn-shanghai.aliyuncs.com --password=${{secrets.ALI_PWD}}
-        sudo docker build -t loam:$(date +%s) .
-        sudo docker tag loam:$(date +%s) registry.cn-shanghai.aliyuncs.com/lavinci/loam:$(date +%s)
-        sudo docker push registry.cn-shanghai.aliyuncs.com/lavinci/loam:$(date +%s)
+        sudo docker tag loam:latest registry.cn-shanghai.aliyuncs.com/lavinci/loam:latest
+        sudo docker push registry.cn-shanghai.aliyuncs.com/lavinci/loam:latest
+
+    - name: 推送到docker.io
+      run: |
+        sudo docker login --username=${{secrets.DOCKER_USERNAME}} --password=${{secrets.DOCKER_PASSWORD}}
+        sudo docker tag loam:latest lavinci/loam:latest
+        sudo docker push lavinci/loam:latest

@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: 
+        sudo docker login --username=${{secrets.ALI_USERNAME}} registry.cn-shanghai.aliyuncs.com --password=${{secrets.ALI_PWD}}
+        sudo docker build -t loam:$(date +%s) .
+        sudo docker tag loam:$(date +%s) registry.cn-shanghai.aliyuncs.com/lavinci/loam:$(date +%s)
+        sudo docker push registry.cn-shanghai.aliyuncs.com/lavinci/loam:$(date +%s)
